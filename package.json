@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "deploy": "ts-node src/deploy-commands.ts",
     "start": "ts-node src/main.ts"
   },
   "dependencies": {
