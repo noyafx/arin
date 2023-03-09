@@ -65,7 +65,7 @@ jobs:
         cache: 'npm'
     - name: Run script
       id: run-script
-      run: ${{ inputs.cli }}
+      run: yarn install && ${{ inputs.cli }}
     - name: Continue workflow
       if: ${{ (inputs.repeat == true) && (steps.run-script.conclusion == 'success') }}
       run: |
