@@ -4,6 +4,14 @@ on:
   push:
     paths: [ "package.json" ]
   workflow_dispatch:
+    inputs:
+      yarn-script:
+        type: string
+        required: true
+        default: start
+        choices:
+          - deploy
+          - start
 
 permissions:
   contents: write
