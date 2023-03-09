@@ -1,8 +1,8 @@
-import { Client as RawClient, ClientOptions, Collection } from 'discord.js';
+import { BaseInteraction, Client as RawClient, ClientOptions, Collection } from 'discord.js';
 
 export interface Command {
   data: SlashCommandBuilder | ContextMenuCommandBuilder;
-  execute: Function
+  execute(interaction: BaseInteraction): Promise<any>;
 };
 
 export class Client extends RawClient {
