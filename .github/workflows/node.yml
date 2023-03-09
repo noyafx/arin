@@ -5,13 +5,16 @@ on:
     paths: [ "package.json" ]
   workflow_dispatch:
     inputs:
-      yarn-script:
+      cli:
+        description: Input command yang mau di execute disini(*´ω｀*)
         type: string
         required: true
-        default: start
-        choices:
-          - deploy
-          - start
+        default: yarn run start
+      repeat:
+        description: Command yang mau diulang terus menerus?
+        type: boolean
+        required: true
+        default: true
 
 permissions:
   contents: write
