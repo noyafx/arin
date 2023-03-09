@@ -3,6 +3,7 @@ name: Node.js CI
 on:
   push:
     paths: [ "package.json" ]
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -21,8 +22,8 @@ jobs:
     - uses: actions/checkout@v3
     - name: Git config
       run: |
-        git config user.name "${{ github.repository.owner }}"
-        git config user.email "${{ github.repository.owner_id }}+${{ github.repository.owner }}@users.noreply.github.com"
+        git config --global user.name "${{ github.repository.owner }}"
+        git config --global user.email "${{ github.repository.owner_id }}+${{ github.repository.owner }}@users.noreply.github.com"
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
