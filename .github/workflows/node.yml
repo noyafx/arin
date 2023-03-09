@@ -8,11 +8,9 @@ on:
 permissions:
   contents: write
 
-env:
-  GH_PAT: ${{ secrets.GITHUB_TOKEN }}
-
 jobs:
   setup:
+    if: ${{ github.event_name == "push" }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
