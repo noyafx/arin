@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "ts-node src/main.ts"
+    "start": ""
   },
   "dependencies": {
     "discord.js": "^14.7.1",
