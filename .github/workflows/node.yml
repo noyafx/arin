@@ -6,12 +6,12 @@ on:
   workflow_dispatch:
     inputs:
       cli:
-        description: - perintah yang akan di execute
+        description: Perintah yang akan di execute
         type: string
         required: true
         default: yarn run start
       repeat:
-        description: - ulangi perintah (jika berhasil)
+        description: Ulangi perintah (jika berhasil)
         type: boolean
         required: true
         default: true
