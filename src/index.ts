@@ -1,2 +1,13 @@
-console.log("tes masbro");
-setTimeout(() => process.exit(0), 10 * 1000);
+import { Client } from './types';
+import { Collection } from 'discord.js';
+
+const client: Client = new Client({
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildVoiceStates
+  ]
+});
+
+(async () => {
+  await client.login(process.env.DISCORD_TOKEN);
+})();
