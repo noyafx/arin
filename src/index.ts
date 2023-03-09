@@ -1,11 +1,16 @@
 import { Client } from './types';
-import { Collection } from 'discord.js';
+import { ActivityType, Collection } from 'discord.js';
 
 const client: Client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildVoiceStates
-  ]
+  ],
+  presence: {
+    activities: [
+      { name: "emptiness", type: ActivityType.Listening }
+    ]
+  }
 });
 
 (async () => {
