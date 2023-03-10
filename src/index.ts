@@ -13,6 +13,11 @@ const client: Client = new Client({
   }
 });
 
+import * as events from './events/mod.ts';
+for (const event of Object.entries(events)) {
+  client[event.once ? "once" : "on"](event.name, (...args) => event.execute(...args));
+};
+
 (async () => {
   await client.login(process.env.DISCORD_TOKEN);
 })();
