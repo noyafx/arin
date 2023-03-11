@@ -14,13 +14,11 @@ const client: Client = new Client({
 });
 
 import * as events from './events/mod.ts';
-for (const event of Object.entries(events)) {
-  client[event.once ? "once" : "on"](event.name, (...args) => event.execute(...args));
+for (const [eventName, event] of Object.entries(events)) {
+  client[event.once ? "once" : "on"](eventName, (...args) => event.execute(...args));
 };
 
-(async () => {
-  await client.login(process.env.DISCORD_TOKEN);
-})();
+client.login(process.env.DISCORD_TOKEN);
 
 // 4 * 60 * 60 * 1000
 setTimeout(() => process.exit(0), 4 * 60 * 60 * 1000);
