@@ -4,7 +4,7 @@
     "start": "ts-node src/index.ts"
   },
   "dependencies": {
-    "discord.js": "^14.7.1",
+    "discord.js": "^14.8.0",
     "quick.db": "^9.0.8"
   },
   "devDependencies": {
