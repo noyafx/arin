@@ -62,18 +62,19 @@ jobs:
         cache: 'npm'
     - name: Discord config
       run: |
-        if [ ${{ github.ref }} = 'refs/heads/main' ]
-        then
+        if [ ${{ github.ref }} = 'refs/heads/main' ]; then
           echo "secrets.DISCORD_ID=${{ secrets.MAIN_DISCORD_ID }} >> $GITHUB_ENV
           echo "secrets.DISCORD_TOKEN=${{ secrets.MAIN_DISCORD_TOKEN }} >> $GITHUB_ENV
-        elif [ ${{ github.ref }} = 'refs/heads/dev' ]
-        then
+        elif [ ${{ github.ref }} = 'refs/heads/dev' ]; then
           echo "secrets.DISCORD_ID=${{ secrets.DEV_DISCORD_ID }} >> $GITHUB_ENV
           echo "secrets.DISCORD_TOKEN=${{ secrets.DEV_DISCORD_TOKEN }} >> $GITHUB_ENV
         fi
     - name: Run script
       id: run-script
       run: yarn install && ${{ inputs.cli }}
+      env:
+        DISCORD_ID: ${{ env.DISCORD_ID }}
+        DISCORD_TOKEN: ${{ env.DISCORD_TOKEN }}
     - name: Continue workflow
       if: ${{ (inputs.repeat == true) && (steps.run-script.conclusion == 'success') }}
       run: |
