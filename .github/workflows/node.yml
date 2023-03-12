@@ -20,10 +20,6 @@ permissions:
   actions: write
   contents: write
 
-env:
-  DISCORD_ID: ${{ secrets.DISCORD_ID }}
-  DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
-
 jobs:
   setup:
     if: ${{ github.event_name == 'push' }}
@@ -64,9 +60,21 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+    - name: Discord config
+      run: |
+        if [ ${{ github.ref_name }} = 'main' ]; then
+          echo "secrets.DISCORD_ID=${{ secrets.MAIN_DISCORD_ID }} >> $GITHUB_ENV
+          echo "secrets.DISCORD_TOKEN=${{ secrets.MAIN_DISCORD_TOKEN }} >> $GITHUB_ENV
+        elif [ ${{ github.ref_name }} = 'dev' ]; then
+          echo "secrets.DISCORD_ID=${{ secrets.DEV_DISCORD_ID }} >> $GITHUB_ENV
+          echo "secrets.DISCORD_TOKEN=${{ secrets.DEV_DISCORD_TOKEN }} >> $GITHUB_ENV
+        fi
     - name: Run script
       id: run-script
       run: yarn install && ${{ inputs.cli }}
+      env:
+        DISCORD_ID: ${{ env.DISCORD_ID }}
+        DISCORD_TOKEN: ${{ env.DISCORD_TOKEN }}
     - name: Continue workflow
       if: ${{ (inputs.repeat == true) && (steps.run-script.conclusion == 'success') }}
       run: |
