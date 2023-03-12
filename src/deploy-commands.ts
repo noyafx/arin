@@ -1,4 +1,4 @@
-import { CommandData } from '../types';
+import { CommandData } from './types';
 import { REST, Routes } from 'discord.js';
 
 const rest: REST = new REST({
