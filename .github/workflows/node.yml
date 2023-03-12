@@ -62,10 +62,10 @@ jobs:
         cache: 'npm'
     - name: Discord config
       run: |
-        if [ ${{ github.ref }} = 'refs/heads/main' ]; then
+        if [ ${{ github.ref_name }} = 'main' ]; then
           echo "secrets.DISCORD_ID=${{ secrets.MAIN_DISCORD_ID }} >> $GITHUB_ENV
           echo "secrets.DISCORD_TOKEN=${{ secrets.MAIN_DISCORD_TOKEN }} >> $GITHUB_ENV
-        elif [ ${{ github.ref }} = 'refs/heads/dev' ]; then
+        elif [ ${{ github.ref_name }} = 'dev' ]; then
           echo "secrets.DISCORD_ID=${{ secrets.DEV_DISCORD_ID }} >> $GITHUB_ENV
           echo "secrets.DISCORD_TOKEN=${{ secrets.DEV_DISCORD_TOKEN }} >> $GITHUB_ENV
         fi
