@@ -1,4 +1,4 @@
-import { BaseInteraction, Client as RawClient, ClientOptions, Collection } from 'discord.js';
+import { BaseInteraction, Client as RawClient, ClientOptions, Collection, ContextMenuCommandBuilder, SlashCommandBuilder } from 'discord.js';
 
 export interface Event {
   once?: boolean;
@@ -16,6 +16,6 @@ export class Client extends RawClient {
   commands: Collection<string, Command>;
   constructor(options: ClientOptions) {
     super(options);
-    thid.commands = new Collection();
+    this.commands = new Collection();
   }
 };
