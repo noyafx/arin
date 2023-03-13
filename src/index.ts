@@ -5,12 +5,7 @@ const client: Client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildVoiceStates
-  ],
-  presence: {
-    activities: [
-      { name: "emptiness", type: ActivityType.Listening }
-    ]
-  }
+  ]
 });
 
 import * as events from './events/mod.ts';
