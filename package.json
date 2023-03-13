@@ -1,7 +1,8 @@
 {
   "scripts": {
     "deploy": "ts-node src/deploy-commands.ts",
-    "start": "ts-node src/index.ts"
+    "start": "ts-node src/index.ts",
+    "update": "git add yarn.lock && git commit -m "dependencies update" && git pull origin && git push origin"
   },
   "dependencies": {
     "discord.js": "^14.8.0",
